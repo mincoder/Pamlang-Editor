@@ -1,5 +1,4 @@
 package pamlang;
-import javax.swing.JOptionPane;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
@@ -8,14 +7,28 @@ import javax.swing.text.*;
 /**
 
  */
+
+@SuppressWarnings("serial")
 public class TextEditor extends JFrame{
-        private JTextArea area = new JTextArea(20,120);
+
+	int miny=20;
+	int minx=120;
+        private JTextArea area = new JTextArea(miny,minx); {
+        
+        	String sizeStr = area.getSize().getHeight() +" X " + area.getSize().getWidth();
+        	System.out.println(sizeStr);
+        }
+  
+
+
         private JFileChooser dialog = new JFileChooser(System.getProperty("user.dir"));
         private String currentFile = "Untitled";
         private boolean changed = false;
 
         public static void main(String[] args) {
             new TextEditor();
+            
+          
         }
 
         public TextEditor() {
