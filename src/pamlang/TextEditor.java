@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import javax.swing.*;
+import javax.swing.event.DocumentListener;
 import javax.swing.text.*;
 /**
 
@@ -10,24 +11,28 @@ import javax.swing.text.*;
 
 @SuppressWarnings("serial")
 public class TextEditor extends JFrame{
-
+	 float sizeStr;
+	float sizeStr1;
+	int q;
+	int p;
 	int miny=20;
 	int minx=120;
         private JTextArea area = new JTextArea(miny,minx); {
         
-        	String sizeStr = area.getSize().getHeight() +" X " + area.getSize().getWidth();
-        	System.out.println(sizeStr);
+        
         }
   
 
-
+         
+    	
         private JFileChooser dialog = new JFileChooser(System.getProperty("user.dir"));
         private String currentFile = "Untitled";
         private boolean changed = false;
 
         public static void main(String[] args) {
             new TextEditor();
-            
+        
+      
           
         }
 
@@ -48,7 +53,8 @@ public class TextEditor extends JFrame{
             file.add(Quit);
             file.add(SaveAs);
             file.addSeparator();
-
+            
+area.setMinimumSize(area.getSize());
             for (int i = 0; i < 4; i++)
                 file.getItem(i).setIcon(null);
 
@@ -84,6 +90,19 @@ public class TextEditor extends JFrame{
             area.addKeyListener(k1);
             setTitle(currentFile);
             setVisible(true);
+
+          	System.out.println(sizeStr);
+          	System.out.println(sizeStr1);
+          	/*if(sizeStr<=319||sizeStr1<=839) {
+          	JOptionPane.showMessageDialog(null, "ERR.WINDOWMINIMUMREACHED");	
+          		System.exit(0);
+          	}*/            sizeStr = (float) area.getSize().getHeight();
+       //    sizeStr1 =(float) area.getSize().getWidth();
+           area.setMinimumSize(area.getSize());
+          //	int bb =(int)Double.parseDouble(sizeStr);
+    //     Dimension( q=10, p=10);
+    //area.setMinimumSize();
+         
         }
             private KeyListener k1 = new KeyAdapter() {
                 public void keyPressed(KeyEvent e) {
@@ -126,7 +145,7 @@ public class TextEditor extends JFrame{
             Action Paste = m.get(DefaultEditorKit.pasteAction);
             private void saveFileAs() {
                 if(dialog.showSaveDialog(null)==JFileChooser.APPROVE_OPTION);
-                    //saveFile(dialog.getSelectedFile().getAbsolutePath());
+                   // saveFile(dialog.getSelectedFile().getAbsolutePath());
             }
             private void saveOld() {
                 if(changed) {
