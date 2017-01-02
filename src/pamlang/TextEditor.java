@@ -5,11 +5,12 @@ import java.io.*;
 import javax.swing.*;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.*;
+//import pamlang.pamlang.reader;
 /**
 
  */
 
-@SuppressWarnings("serial")
+@SuppressWarnings({ "serial", "unused" })
 public class TextEditor extends JFrame{
 	 float sizeStr;
 	float sizeStr1;
@@ -53,7 +54,7 @@ public class TextEditor extends JFrame{
             file.add(Quit);
             file.add(SaveAs);
             file.addSeparator();
-            
+            area.setEditable(false);
 area.setMinimumSize(area.getSize());
             for (int i = 0; i < 4; i++)
                 file.getItem(i).setIcon(null);
@@ -90,7 +91,7 @@ area.setMinimumSize(area.getSize());
             area.addKeyListener(k1);
             setTitle(currentFile);
             setVisible(true);
-
+         
           	System.out.println(sizeStr);
           	System.out.println(sizeStr1);
           	/*if(sizeStr<=319||sizeStr1<=839) {
